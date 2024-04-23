@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
+  console.log("PROTECTED PAGE");
   const supabase = createClient();
 
   const {
@@ -13,6 +14,7 @@ export default async function ProtectedPage() {
   } = await supabase.auth.getUser();
 
   if (!user) {
+    console.log("PROTECTED PAGE - Redirect to login");
     return redirect("/login");
   }
 
